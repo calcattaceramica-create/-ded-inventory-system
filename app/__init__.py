@@ -196,5 +196,5 @@ def create_app(config_name='default'):
     return app
 
 from app import models
-from app import models_license
+# models_license removed - no license system
 
