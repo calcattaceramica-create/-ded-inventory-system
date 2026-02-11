@@ -1,15 +1,14 @@
 """WSGI entry point for production deployment"""
 import os
-import sys
 
-# Add the current directory to the path
-sys.path.insert(0, os.path.dirname(__file__))
-
-# Set production environment
+# Set production environment before importing app
 os.environ['FLASK_ENV'] = 'production'
 
-# Import the app
+# Import the Flask app instance from run.py
 from run import app
+
+# This is what gunicorn will use
+application = app
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 10000))
