@@ -85,10 +85,15 @@ with app.app_context():
             
             # Settings
             Permission(name='settings.view', name_ar='عرض الإعدادات', module='settings'),
+            Permission(name='settings.company.view', name_ar='عرض بيانات الشركة', module='settings'),
             Permission(name='settings.company.edit', name_ar='تعديل بيانات الشركة', module='settings'),
+            Permission(name='settings.branches.view', name_ar='عرض الفروع', module='settings'),
             Permission(name='settings.branches.manage', name_ar='إدارة الفروع', module='settings'),
+            Permission(name='settings.users.view', name_ar='عرض المستخدمين', module='settings'),
             Permission(name='settings.users.manage', name_ar='إدارة المستخدمين', module='settings'),
+            Permission(name='settings.roles.view', name_ar='عرض الأدوار', module='settings'),
             Permission(name='settings.roles.manage', name_ar='إدارة الأدوار', module='settings'),
+            Permission(name='settings.permissions.view', name_ar='عرض الصلاحيات', module='settings'),
             Permission(name='settings.permissions.manage', name_ar='إدارة الصلاحيات', module='settings'),
         ]
         
