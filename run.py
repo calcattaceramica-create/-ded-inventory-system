@@ -12,7 +12,11 @@ print(f"Current directory: {os.getcwd()}")
 
 # Import app after printing initial info
 from app import create_app, db
-from app.models import *
+from app.models import (
+    User, Role, Permission, Company, Branch, Category, Unit, Product,
+    Warehouse, Stock, Customer, Supplier, SalesInvoice, PurchaseInvoice,
+    Account, JournalEntry, Employee, Department
+)
 
 app = create_app(config_name)
 
