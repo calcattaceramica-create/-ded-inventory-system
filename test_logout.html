@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تسجيل الخروج - Logout Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .test-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .btn-test {
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+        .result-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .step {
+            background: #e9ecef;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-card">
+        <h1 class="text-center mb-4">🔍 اختبار تسجيل الخروج</h1>
+        <h2 class="text-center text-muted mb-5">Logout Functionality Test</h2>
+
+        <div class="step">
+            <h4>📝 الخطوة 1: تسجيل الدخول</h4>
+            <p>انقر على الزر أدناه لتسجيل الدخول:</p>
+            <a href="http://127.0.0.1:5000/auth/login" target="_blank" class="btn btn-primary btn-test">
+                🔐 تسجيل الدخول - Login
+            </a>
+        </div>
+
+        <div class="step">
+            <h4>📝 الخطوة 2: التحقق من الجلسة</h4>
+            <p>بعد تسجيل الدخول، انقر على الزر أدناه للتحقق من أنك مسجل دخول:</p>
+            <a href="http://127.0.0.1:5000/index" target="_blank" class="btn btn-success btn-test">
+                🏠 الصفحة الرئيسية - Dashboard
+            </a>
+            <p class="text-muted mt-2">✅ إذا ظهرت لك لوحة التحكم، فأنت مسجل دخول بنجاح</p>
+        </div>
+
+        <div class="step">
+            <h4>📝 الخطوة 3: تسجيل الخروج</h4>
+            <p>الآن انقر على الزر أدناه لتسجيل الخروج:</p>
+            <a href="http://127.0.0.1:5000/auth/logout" target="_blank" class="btn btn-danger btn-test">
+                🚪 تسجيل الخروج - Logout
+            </a>
+            <p class="text-muted mt-2">✅ يجب أن تُعاد توجيهك إلى صفحة تسجيل الدخول</p>
+        </div>
+
+        <div class="step">
+            <h4>📝 الخطوة 4: التحقق من تسجيل الخروج</h4>
+            <p>بعد تسجيل الخروج، انقر على الزر أدناه للتحقق:</p>
+            <a href="http://127.0.0.1:5000/index" target="_blank" class="btn btn-warning btn-test">
+                🔍 اختبار الوصول - Test Access
+            </a>
+            <p class="text-muted mt-2">✅ إذا تم إعادة توجيهك لصفحة تسجيل الدخول، فتسجيل الخروج يعمل بشكل صحيح</p>
+            <p class="text-danger mt-2">❌ إذا ظهرت لك لوحة التحكم، فتسجيل الخروج لا يعمل!</p>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="alert alert-info">
+            <h5>💡 نصائح مهمة:</h5>
+            <ul>
+                <li>تأكد من أن التطبيق يعمل على: <code>http://127.0.0.1:5000</code></li>
+                <li>استخدم بيانات الدخول: <strong>admin</strong> / <strong>admin123</strong></li>
+                <li>إذا لم يعمل تسجيل الخروج، امسح الكوكيز: <kbd>Ctrl + Shift + Delete</kbd></li>
+                <li>جرب في وضع التصفح الخاص (Incognito): <kbd>Ctrl + Shift + N</kbd></li>
+            </ul>
+        </div>
+
+        <div class="alert alert-warning">
+            <h5>🔧 حلول سريعة:</h5>
+            <ol>
+                <li><strong>مسح الكاش:</strong> اضغط <kbd>Ctrl + Shift + Delete</kbd> واختر "Cookies and other site data"</li>
+                <li><strong>إعادة تحميل الصفحة:</strong> اضغط <kbd>Ctrl + Shift + R</kbd></li>
+                <li><strong>إغلاق المتصفح:</strong> أغلق جميع النوافذ وافتح المتصفح من جديد</li>
+                <li><strong>استخدام رابط مباشر:</strong> اذهب إلى <code>http://127.0.0.1:5000/auth/logout</code></li>
+            </ol>
+        </div>
+
+        <div class="text-center mt-4">
+            <button class="btn btn-secondary btn-test" onclick="window.location.reload()">
+                🔄 إعادة تحميل الصفحة - Reload
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
