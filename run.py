@@ -76,7 +76,7 @@ def init_database():
                     Permission(name='inventory.stock.edit', name_ar='تعديل مخزون', module='inventory'),
                     Permission(name='inventory.stock.delete', name_ar='حذف مخزون', module='inventory'),
                     Permission(name='inventory.products.view', name_ar='عرض المنتجات', module='inventory'),
-                    Permission(name='inventory.products.add', name_ar='إضافة منتج', module='inventory'),
+                    Permission(name='inventory.products.create', name_ar='إضافة منتج', module='inventory'),
                     Permission(name='inventory.products.edit', name_ar='تعديل منتج', module='inventory'),
                     Permission(name='inventory.products.delete', name_ar='حذف منتج', module='inventory'),
                     Permission(name='inventory.damaged.view', name_ar='عرض المخزون التالف', module='inventory'),
