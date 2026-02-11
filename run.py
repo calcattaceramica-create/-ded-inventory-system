@@ -1,4 +1,5 @@
 import os
+import sys
 from app import create_app, db
 from app.models import *
 
@@ -6,13 +7,27 @@ from app.models import *
 config_name = os.getenv('FLASK_ENV', 'development')
 if config_name == 'production':
     config_name = 'production'
+
+print(f"Starting application with config: {config_name}")
+print(f"Python version: {sys.version}")
+print(f"Current directory: {os.getcwd()}")
+
 app = create_app(config_name)
+
+print(f"Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
 
 # Initialize database on startup (for Render deployment)
 with app.app_context():
     try:
+        # Ensure database directory exists
+        db_path = app.config['SQLALCHEMY_DATABASE_URI'].replace('sqlite:///', '')
+        db_dir = os.path.dirname(db_path)
+        if db_dir and not os.path.exists(db_dir):
+            os.makedirs(db_dir)
+            print(f"Created database directory: {db_dir}")
+
         db.create_all()
-        print("Database tables created successfully!")
+        print("✅ Database tables created successfully!")
 
         # Initialize default data if database is empty
         from app.models import Company, Branch, Role, User, Unit, Warehouse, Account
@@ -92,9 +107,14 @@ with app.app_context():
             db.session.add_all(accounts)
 
             db.session.commit()
-            print('Default data initialized successfully!')
+            print('✅ Default data initialized successfully!')
+        else:
+            print('ℹ️ Database already contains data, skipping initialization')
     except Exception as e:
-        print(f"Database initialization error: {e}")
+        print(f"❌ Database initialization error: {e}")
+        import traceback
+        traceback.print_exc()
+        # Don't exit - let the app start anyway
 
 @app.shell_context_processor
 def make_shell_context():
